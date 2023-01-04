@@ -15,6 +15,7 @@ import { Private } from './components/auth/Private';
 import { Profile } from './components/auth/Profile';
 import { List } from './components/generics/List';
 import { RandomNumber } from './components/restriction/RandomNumber';
+import { Toast } from './components/templateLitterals/Toast';
 
 const NameList = [
   {
@@ -50,7 +51,7 @@ function App() {
       <Counter message="The current counter is:" />
      <Private isLoggedIn={true} component={Profile} />
      <List items={['banana', 'Superman', 'Wonder woman']} onClick= {(item) =>alert(item.toString() +" has been clicked")} />
-  <List items={[1,2,3]} onClick= {(item) =>alert(item.toString() +" has been clicked")} /> */}
+  <List items={[1,2,3]} onClick= {(item) =>alert(item.toString() +" has been clicked")} /> 
      <List items={[
   {
     id: 1,
@@ -68,7 +69,8 @@ function App() {
     lname: "Boire ton sang"
   }
 ]} onClick= {(item) =>alert(item.toString() +" have been clicked")} />
-<RandomNumber value={10}/>
+  <RandomNumber value={10} isPositive/> */}
+  <Toast position='center-bottom' />
     </div>
   );
 }

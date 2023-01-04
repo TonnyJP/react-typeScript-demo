@@ -1,15 +1,31 @@
 import React from "react"
 
-type RandomNumberProps ={
-    value: number,
-    isPositiv?: boolean,
-    isNegativ?: boolean,
-    isZero?: boolean
+type RandomNumberType = {
+    value: number
 }
 
-export const RandomNumber: React.FC<React.PropsWithChildren<RandomNumberProps>> = ({value, isNegativ, isPositiv, isZero}) => {
+type PositiveNumber = RandomNumberType & {
+    isPositive: boolean;
+    isNegative?: never;
+    isZero?: never
+}
+
+type NegativeNumber = RandomNumberType & {
+    isPositive?: never;
+    isNegative: boolean;
+    isZero?: never
+}
+
+type ZeroNumber = RandomNumberType & {
+    isPositive?: never;
+    isNegative?: never;
+    isZero: boolean
+}
+type RandomNumberProps = PositiveNumber | NegativeNumber | ZeroNumber
+
+export const RandomNumber: React.FC<React.PropsWithChildren<RandomNumberProps>> = ({value, isNegative, isPositive, isZero}) => {
     
     return (
-        <div>{value} {isPositiv && 'positiv'} {isNegativ && 'negativ'} {isZero && 'zero'}</div>
+        <div>{value} {isPositive && 'positiv'} {isNegative && 'negativ'} {isZero && 'zero'}</div>
     )
 }
